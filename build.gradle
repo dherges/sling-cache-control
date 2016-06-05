@@ -1,0 +1,49 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'osgi'
+
+buildscript {
+  repositories {
+    jcenter()
+    maven {
+      url "http://dl.bintray.com/twcable/aem"
+    }
+  }
+
+  dependencies {
+    // --> https://github.com/TWCable/gradle-plugin-cq-bundle
+    //classpath 'com.twcable.gradle:gradle-plugin-cq-bundle:2.1.0'
+    // --> https://github.com/TWCable/gradle-plugin-cq-package
+    //classpath 'com.twcable.gradle:gradle-plugin-cq-package:2.1.0'
+    // --> https://github.com/TWCable/gradle-plugin-scr
+    //classpath 'com.twcable.gradle:gradle-plugin-scr:1.1.0'
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+configurations {
+  provided
+}
+
+dependencies {
+  compileOnly 'org.apache.sling:org.apache.sling.api:2.11.0'
+  compileOnly 'org.apache.sling:org.apache.sling.models.api:1.2.2'
+  compileOnly 'javax.inject:javax.inject:1'
+
+  testCompile 'org.apache.sling:org.apache.sling.testing.sling-mock:1.6.2'
+  testCompile 'org.assertj:assertj-core:3.4.1'
+  testCompile 'ch.qos.logback:logback-classic:0.9.24'
+}
+
+jar {
+  manifest {
+    instruction 'Bundle-SymbolicName', 'de.spektrakel.sling.cachecontrol'
+    instruction 'Sling-Model-Packages', 'de.spektrakel.sling.cachecontrol'
+  }
+}
+
+group = 'de.spektrakel.sling.cachecontrol'
+version = '1.0-SNAPSHOT'
