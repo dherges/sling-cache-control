@@ -32,6 +32,7 @@ dependencies {
   compileOnly 'org.apache.sling:org.apache.sling.api:2.11.0'
   compileOnly 'org.apache.sling:org.apache.sling.models.api:1.2.2'
   compileOnly 'javax.inject:javax.inject:1'
+  compileOnly 'javax.servlet:servlet-api:2.4'
 
   testCompile 'org.apache.sling:org.apache.sling.testing.sling-mock:1.6.2'
   testCompile 'org.assertj:assertj-core:3.4.1'
